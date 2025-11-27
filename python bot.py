@@ -2,7 +2,12 @@ from flask import Flask, request
 import telebot
 import os
 
-TOKEN = os.getenv("8551259402:AAH_cxAGJFxHWWdWtmnLTFbT5sXdndXCZIY")  # Render environment variable
+# Environment variable से TOKEN पढ़ें
+TOKEN = os.getenv("TOKEN")  
+
+if not TOKEN:
+    raise ValueError("TOKEN not found. Please set the environment variable on Render.")
+
 bot = telebot.TeleBot(TOKEN)
 
 app = Flask(__name__)
